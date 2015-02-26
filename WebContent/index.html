@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Socket</title>
+    </head>
+    <body>
+        <h1>Hello World - Web Socket</h1>
+        <h2>Mensagem do Servidor: </h2> <span id="result"></span>
+ 
+        <script>
+            var wsocket;
+            function connects() {
+               wsocket = new WebSocket("ws://localhost:8080/websocket/italo");
+               wsocket.onmessage = onMessage;
+            }
+            function onMessage(eventRecebidoDoServidor) {
+               var textoRecebido = eventRecebidoDoServidor.data;
+               document.getElementById("result").innerHTML = textoRecebido;
+            }
+            window.addEventListener("load", connects, false);
+        </script>
+    </body>
+</html>
